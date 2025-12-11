@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Chirp;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+
 // use Illuminate\Support\Facades\Gate;
 
 
@@ -19,8 +20,8 @@ class ChirpController extends Controller
         //
         $chirps = Chirp::with('user')->latest()
             ->paginate(2);  // Limit to 50 most recent chirps
-            // ->get();
-        return view ('home', ['chirps' => $chirps]);
+        // ->get();
+        return view('home', ['chirps' => $chirps]);
     }
 
     /**
@@ -46,7 +47,7 @@ class ChirpController extends Controller
         // Chirp::create($validate);
 
         return redirect('/')->with('success', 'Chirp created successfully!');
-        
+
     }
 
     /**
@@ -81,7 +82,8 @@ class ChirpController extends Controller
 
         $chirp->update($validate);
 
-        return redirect('/')->with('success', 'Chirp updated successfully!');;
+        return redirect('/')->with('success', 'Chirp updated successfully!');
+        ;
     }
 
     /**
